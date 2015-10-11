@@ -51,7 +51,13 @@ StepsPerDay<- aggregate(steps ~ date, ActivityData, sum, na.rm=TRUE)
 ```
 ####2. Create histogram of the total number of steps taken each day
 ```{r}
-  hist(StepsPerDay$steps, main = "Total Steps Each Day", col="maroon", xlab="Steps per Day",ylab="Frequency of count" ,breaks=seq(from=0,to=25000,by=2500))
+  hist(StepsPerDay$steps, breaks=seq(from=0,to=25000,by=2500),
+       col="maroon",
+       main="Total Steps Each Day",  
+       xlab="Steps per Day",
+       ylab="Frequency of count",
+       ylim = c(0,20))
+
 ```
 
 ####3.Calculate and report the mean and median of the total number of steps taken per day
@@ -113,7 +119,13 @@ paste("Total number of missing values in the dataset after the filling = ", sum(
 
 ```{r}
 StepsPerDayNew<- aggregate(steps ~ date, ActivityDataNew, sum)
-hist(StepsPerDayNew$steps, main = c("Total Steps Each Day"), col="pink", xlab="Steps per Day",ylab="Frequency of count" )
+hist(StepsPerDayNew$steps, breaks=seq(from=0,to=25000,by=2500),
+     col="maroon",
+     main="Total Steps Each Day", 
+     xlab="Steps per Day",
+     ylab="Frequency of count",
+     ylim=c(0,20))
+
 paste("Mean of the new dataset = ",mean(StepsPerDayNew$steps))
 paste("Median of the new dataset = ",median(StepsPerDayNew$steps))
 
@@ -164,5 +176,5 @@ xyplot(steps ~ interval | daylevel, stepsByDay, type = "l", layout = c(1, 2), xl
 
 ```
 
-####There is a higher peak earlier on weekdays and higher overall activity during  weekends.
+####Even though there is a higher peak during weekdays during the early period, there is higher overall activity during  weekends throughout the duration.
 
